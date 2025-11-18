@@ -1551,7 +1551,6 @@ if __name__ == "__main__":
     # Load computed physical parameters
     ms_sim_L = np.linalg.cholesky(ms_sim_J1)
     ms_sim_L = np.array([ms_sim_L[0][0],ms_sim_L[1][0],ms_sim_L[1][1],ms_sim_L[2][0],ms_sim_L[2][1],ms_sim_L[2][2]])
-    # ms_sim_L = np.array([ms_sim_L[1][0],ms_sim_L[1][1],ms_sim_L[2][0],ms_sim_L[2][1],ms_sim_L[2][2]])
     initial_params_list = [ms_sim_L, ms_sim_c, ms_sim_A1M, ms_sim_A1F]
     initial_params = np.concatenate([param.flatten() for param in initial_params_list])
     physical_params = torch.tensor(initial_params, dtype=torch.float32)
