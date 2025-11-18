@@ -1444,7 +1444,6 @@ if __name__ == "__main__":
     plt.grid(True)  # Optional: helps with readability
     plt.savefig(os.path.join(directory1, file_path1)+'.png', bbox_inches='tight')
     plt.savefig(os.path.join(directory2, file_path1)+'.pdf', bbox_inches='tight')
-    # plt.show()
     plt.close()
     # Saving data points
     file_points = directory2 + '/loss.txt'
@@ -1461,7 +1460,6 @@ if __name__ == "__main__":
     plt.grid(True)  # Optional: helps with readability
     plt.savefig(os.path.join(directory1, file_path2)+'.png', bbox_inches='tight')
     plt.savefig(os.path.join(directory2, file_path2)+'.pdf', bbox_inches='tight')
-    # plt.show()
     plt.close()
     # Saving data points
     file_points = directory2 + '/mean_loss.txt'
@@ -1478,7 +1476,6 @@ if __name__ == "__main__":
     plt.grid(True)  # Optional: helps with readability
     plt.savefig(os.path.join(directory1, file_path3)+'.png', bbox_inches='tight')
     plt.savefig(os.path.join(directory2, file_path3)+'.pdf', bbox_inches='tight')
-    # plt.show()
     plt.close()
     # Saving data points
     file_points = directory2 + '/quadratic_diff.txt'
