@@ -5,7 +5,7 @@ This repository contains the main code used in the master thesis "Modeling of Or
 This code was used in a master thesis project focused on modeling an orbital robot system using model-based, data-driven and hybrid model learning approaches and comparing its results. With validated system dynamics, we simulate robot trajectories and save them to then feed the different types of learning approaches, whose results were then compared. Both the simulator and the model learning scripts are available for the simplified attitude subsystem and for the full system of the robot, which includes both rotational and translational dynamics.
 
 ## Features
-- **3D Rigid Body Simulation**: Implements a physics-based model for state estimation with the validated rigid-body robot equations, and simulates various trajectory types according to user specifications.
+- **3D Rigid Body Simulation**: Implements a physics-based model for state estimation with validated rigid-body robot equations, and simulates various trajectory types according to user specifications.
 - **Results and Visualization**: Every robot model learning script automatically generates trajectory plots for a set of prediction scenarios defined by the user, as well as the perfomance RMSE shooting metrics for every state variable, enabling systematic performance evaluation and comparison.
 
 ## Usage
