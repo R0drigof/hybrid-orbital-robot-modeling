@@ -329,11 +329,6 @@ class Estimator:
         constraints = [barM >> 0, bigLMI >> 0, t >= 0]
         constraints += [th[0] >= 0.01] #so that we dont get the trivial solution
 
-        # (Optional) small regularization / tie-down to avoid degenerate scale:
-        # If the problem is underdetermined it's common to add a small anchoring
-        # e.g. fix one diagonal inertia to a small positive number. Uncomment if needed:
-        # constraints += [th[0] >= 1e-6]
-
         problem = cp.Problem(cp.Minimize(t), constraints)
 
         # solve (try SCS first, fallback to CVXOPT if available)
@@ -374,39 +369,14 @@ def main(argv):
     t_u_after = 0
     t_u_flag = 0
     folder_gimble = "full_system"
-    # training_dataset = "fs_sim_first"
-    # training_dataset = "fs_sim10shots4"
-    # training_dataset = "fs_sim20shots"
-    # training_dataset = "fs_sim16shots_first"
-    # training_dataset = "fs_sim32shots_first"
-    # training_dataset = "fs_sim64shots_first"
     training_dataset = "fs_sim128shots_first"
-    # training_dataset = "fs_sim100shots"
-    # training_dataset = "fs_sim500shots"
-    # training_dataset = "fs_sim1000shots"
+    evaluate_on_linear = 1
     # preffix_vec = [""]
     # suffix_vec = [""]
-    # preffix_vec = ["simnl_", "simnl_", "simnl_"]
-    # suffix_vec = ["_QM2", "_QM3"]
-    # suffix_vec = ["_BFE1","_BFE2", "_AD3"]
-    # preffix_vec = ["", "simnl_"]
-    # suffix_vec = ["", "_QM4"]
-    # preffix_vec = ["simnl_", "simnl_"]
-    # suffix_vec = ["_AD3", "_AD4"]
-    # preffix_vec = ["", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_"]
-    # # suffix_vec = ["", "_QM2", "_QM3", "_QM4", "_QM6", "_QM7", "_QM8", "_QM9", "_BFE1", "_BFE2", "_BFE3", "_BFE4", "_BFE5", "_AD1", "_AD2", "_QM_AD1", "_QM_AD2", "_BFE_AD1", "_QM_BFE_AD1", "_QM_BFE_AD2"]
-    # preffix_vec = ["", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_"]
-    # suffix_vec = ["", "_QM2", "_QM3", "_QM4", "_QM6", "_QM7", "_QM8", "_QM9", "_BFE1", "_BFE2", "_BFE3", "_BFE4", "_BFE5", "_AD1", "_AD2"]
-    evaluate_on_linear = 1
-
     preffix_vec = ["simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_", "simnl_"]
     suffix_vec = ["_QM3", "_QM4", "_QM6", "_QM7", "_QM8", "_QM9", "_BFE1", "_BFE2", "_BFE3", "_BFE4", "_BFE5", "_AD1", "_AD2"]
 
     # Loss hyperparameters for each state variable
-    # plot_hparam_pos = 0.0041
-    # plot_hparam_vel = 0.0007
-    # plot_hparam_quat = 0.9738
-    # plot_hparam_ang_v = 0.0215
     plot_hparam_pos = 0.8127
     plot_hparam_vel = 0.1236
     plot_hparam_quat = 0.0616
@@ -470,7 +440,6 @@ def main(argv):
         true_ms_sim_L = np.linalg.cholesky(true_ms_sim_J1)
         true_ms_sim_L = true_ms_sim_L.T
         true_ms_sim_L = np.array([true_ms_sim_L[0][0],true_ms_sim_L[1][0],true_ms_sim_L[1][1],true_ms_sim_L[2][0],true_ms_sim_L[2][1],true_ms_sim_L[2][2]])
-        # ms_sim_L = np.array([ms_sim_L[1][0],ms_sim_L[1][1],ms_sim_L[2][0],ms_sim_L[2][1],ms_sim_L[2][2]])
         true_initial_params_list = [true_ms_sim_L, true_ms_sim_c, true_ms_sim_A1M, true_ms_sim_A1F]
         true_initial_params = np.concatenate(
             [param.flatten() for param in true_initial_params_list]
@@ -578,11 +547,9 @@ def main(argv):
             def recover_params(params):
                 # Sizes of L, c, AM and AF based on their shapes
                 L_size = 6
-                # L_size = 5
                 c_size = 3
                 AM_size = 18
                 AF_size = 18
-                # l_11 = 0.1322875655532295
 
                 L = params[:L_size]
                 L_aux = L.view(-1)
@@ -593,14 +560,6 @@ def main(argv):
                 L[2, 0] = L_aux[3]
                 L[2, 1] = L_aux[4]
                 L[2, 2] = L_aux[5]
-                # L_aux = L.view(-1)
-                # L_mat = torch.zeros(3, 3, dtype=L.dtype, device=L.device)
-                # L_mat[0, 0] = l_11
-                # L_mat[1, 0] = L_aux[0]
-                # L_mat[1, 1] = L_aux[1]
-                # L_mat[2, 0] = L_aux[2]
-                # L_mat[2, 1] = L_aux[3]
-                # L_mat[2, 2] = L_aux[4]
 
                 c = params[L_size:L_size + c_size].view(3, 1)
                 A1M = params[L_size + c_size:L_size + c_size + AM_size].view(3, 6)
@@ -880,14 +839,6 @@ def main(argv):
                     # Find the unique actuation values and respective indices for the current chunk
                     index_u_chunk_groups, u_chunk_groups = find_unique_actuation_segments(actuation, start_sample_chunk, end_sample_chunk)
 
-                    # print("")
-                    # print("chunk: ",chunk)
-                    # print("index_u_chunk_groups: ",index_u_chunk_groups)
-                    # print("u_chunk_groups: ",u_chunk_groups)
-                    # for group in index_u_chunk_groups:
-                    #     print([t[i].item() for i in group])
-                    # # sys.exit()
-
                     # Pass through each segment of constant actuation
                     for i in range(len(index_u_chunk_groups)):
 
@@ -917,10 +868,7 @@ def main(argv):
                             t[start_sample_chunk_i:end_sample_chunk_i_aux+1].float(), # t from index start_sample_chunk_i to end_sample_chunk_i_aux (needs the +1)
                             rtol=rtol_aux,  # Relative tolerance
                             atol=atol_aux,  # Absolute tolerance
-                            method='dopri5',
-                            # method='rk4' # Use RK4 (Runge-Kutta 4) for faster results
-                            # method="scipy_solver", 
-                            # options={"method": "BDF"}
+                            method='dopri5'
                         )
                         end_odeint_time = time.time()
                         time_odeint.append(end_odeint_time - start_odeint_time)
@@ -989,8 +937,6 @@ def main(argv):
                 # Compute Euler angles using standard formulas
                 phi = torch.atan2(2 * (a * b + c * d), 1 - 2 * (b**2 + c**2))
                 theta = torch.asin(2 * (a * c - d * b))
-                # s = 2 * (a * c - b * d)
-                # theta = -torch.pi / 2 + 2 * torch.atan2(torch.sqrt(1 + s), torch.sqrt(1 - s))
                 psi = torch.atan2(2 * (a * d + b * c), 1 - 2 * (c**2 + d**2))
 
                 # Convert to list of tuples
