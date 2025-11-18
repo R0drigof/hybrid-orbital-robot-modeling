@@ -35,7 +35,7 @@ Similarly, the `simulator_attitude_subsystem.py` script simulates robot trajetor
 timestamp
 w_tk_x w_tk_y w_tk_z 
 bi cj dk a
-u_tk[0] u_tk[1] u_tk[2] u_tk[3] u_tk[4] u_tk[5].
+u_tk[0] u_tk[1] u_tk[2] u_tk[3] u_tk[4] u_tk[5]
 ```
 
 To simulate a robot trajectory with predefined chosen options we run:
