@@ -961,7 +961,6 @@ if __name__ == "__main__":
     true_ms_sim_J1 = np.load('./mats/ms_sim_J1.npy')
     true_ms_sim_L = np.linalg.cholesky(true_ms_sim_J1)
     true_ms_sim_L = np.array([true_ms_sim_L[0][0],true_ms_sim_L[1][0],true_ms_sim_L[1][1],true_ms_sim_L[2][0],true_ms_sim_L[2][1],true_ms_sim_L[2][2]])
-    # ms_sim_L = np.array([ms_sim_L[1][0],ms_sim_L[1][1],ms_sim_L[2][0],ms_sim_L[2][1],ms_sim_L[2][2]])
     true_initial_params_list = [true_ms_sim_L, true_ms_sim_A1M]
     true_initial_params = np.concatenate(
         [param.flatten() for param in true_initial_params_list]
@@ -973,7 +972,6 @@ if __name__ == "__main__":
     ms_sim_J1 = np.load('./mats/n_std_10_mean_1.5_ms_sim_J1.npy')
     ms_sim_L = np.linalg.cholesky(ms_sim_J1)
     ms_sim_L = np.array([ms_sim_L[0][0],ms_sim_L[1][0],ms_sim_L[1][1],ms_sim_L[2][0],ms_sim_L[2][1],ms_sim_L[2][2]])
-    # ms_sim_L = np.array([ms_sim_L[1][0],ms_sim_L[1][1],ms_sim_L[2][0],ms_sim_L[2][1],ms_sim_L[2][2]])
     initial_params_list = [ms_sim_L, ms_sim_A1M]
     initial_params = np.concatenate([param.flatten() for param in initial_params_list])
     params = torch.tensor(initial_params, requires_grad=True, dtype=torch.float32)
