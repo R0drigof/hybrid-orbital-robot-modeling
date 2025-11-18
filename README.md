@@ -47,7 +47,8 @@ python simulator_attitude_subsystem.py
 ### Running the robot model learning scripts
 The `full_sys_mb_ode.py` and `att_subsys_mb_ode.py` consist of the model-based ODE approach learning scripts and the scripts `full_sys_sdp.py` and `att_subsys_sdp.py` consist of the model-based SPD approach learning scripts.
 The `full_sys_data_driven.py` and `att_subsys_data_driven.py` consist of the data-driven approach learning scripts.
-The `full_sys_hybrid_parallel_data_driven.py` and `att_subsys_hybrid_parallel_data_driven.py` consist of the hybrid parallel training approach learning scripts and the scripts `full_sys_hybrid_sequential_data_driven.py` and `att_subsys_hybrid_sequential_data_driven.py` consist of the hybrid sequential training approach learning scripts.
+The `full_sys_hybrid_parallel.py` and `att_subsys_hybrid_parallel.py` consist of the hybrid parallel training approach learning scripts and the scripts `full_sys_hybrid_sequential_data_driven.py` and `att_subsys_hybrid_sequential_data_driven.py` consist of the hybrid sequential training approach learning scripts, in specific the data-driven part that follows the model-based approach in the sequential training.
+
 To run each of the scripts, we respectivelly run:
 ```sh
 python full_sys_mb_ode.py
@@ -56,8 +57,8 @@ python full_sys_sdp.py
 python att_subsys_sdp.py
 python full_sys_data_driven.py
 python att_subsys_data_driven.py
-python full_sys_hybrid_parallel_data_driven.py
-python att_subsys_hybrid_parallel_data_driven.py
+python full_sys_hybrid_parallel.py
+python att_subsys_hybrid_parallel.py
 python full_sys_hybrid_sequential_data_driven.py
 python att_subsys_hybrid_sequential_data_driven.py
 ```
