@@ -12,12 +12,14 @@ This code was used in a master thesis project focused on modeling an orbital rob
 ### Running the system simulators
 The `simulator_full_system.py` script simulates robot trajetories considering the full system and saves them in `.txt` fyles with the following format:
 
+```sh
 timestamp
 x_x x_y x_z
 v_x v_y v_z
 w_tk_x w_tk_y w_tk_z 
 bi cj dk a
 u_tk[0] u_tk[1] u_tk[2] u_tk[3] u_tk[4] u_tk[5]
+```
 
 Each entry corresponds to a state sample containing, respectively:
 - sample timestamp,  
@@ -29,10 +31,12 @@ Each entry corresponds to a state sample containing, respectively:
 
 Similarly, the `simulator_attitude_subsystem.py` script simulates robot trajetories considering the simplified attitude subsystem and saves them in `.txt` fyles with the following format:
 
+```sh
 timestamp
 w_tk_x w_tk_y w_tk_z 
 bi cj dk a
 u_tk[0] u_tk[1] u_tk[2] u_tk[3] u_tk[4] u_tk[5].
+```
 
 To simulate a robot trajectory with predefined chosen options we run:
 ```sh
