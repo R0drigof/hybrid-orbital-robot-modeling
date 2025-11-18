@@ -6,7 +6,7 @@ This code was used in a master thesis project focused on modeling an orbital rob
 
 ## Features
 - **3D Rigid Body Simulation**: Implements a physics-based model for state estimation with validated rigid-body robot equations, and simulates various trajectory types according to user specifications.
-- **Results and Visualization**: Every robot model learning script automatically generates trajectory plots for a set of prediction scenarios defined by the user, as well as the perfomance RMSE shooting metrics for every state variable, enabling systematic performance evaluation and comparison.
+- **Results and Visualization**: Every robot model learning script automatically generates trajectory plots for a set of prediction scenarios defined by the user, using the final obtained dynamics model, as well as the perfomance RMSE shooting metrics for every state variable, enabling systematic performance evaluation and comparison.
 
 ## Usage
 ### Running the system simulators
