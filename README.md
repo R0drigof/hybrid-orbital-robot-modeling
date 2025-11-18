@@ -1,5 +1,5 @@
 # Modeling of Orbital Robotic Systems Using a Hybrid Model-Based and Data-Driven Approach
-This repository contains the main code used in the master thesis "Modeling of Orbital Robotic Systems Using a Hybrid Model-Based and Data-Driven Approach" at Instituto Superior Técnico.
+This repository contains the main code used in the master thesis "Modeling of Orbital Robotic Systems Using a Hybrid Model-Based and Data-Driven Approach" at Instituto Superior Técnico, Universidade de Lisboa, Portugal.
 
 ## Overview
 This code was used in a master thesis project focused on modeling an orbital robot system using model-based, data-driven and hybrid model learning approaches and comparing its results. With validated system dynamics, we simulate robot trajectories and save them to then feed the different types of learning approaches, whose results were then compared. Both the simulator and the model learning scripts are available for the simplified attitude subsystem and for the full system of the robot, which includes both rotational and translational dynamics.
