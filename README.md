@@ -11,7 +11,7 @@ This code was used in a master thesis project focused on modeling an orbital rob
 
 ## Usage
 ### Running the system simulators
-The `simulator_full_system.py` script simulates robot trajetories considering the full system and saves them in `.txt` fyles with the following format:
+The `simulator_full_system.py` script simulates robot trajetories considering the full system and saves them in `.txt` files with the following format:
 
 ```sh
 timestamp
@@ -30,7 +30,7 @@ Each entry corresponds to a state sample containing, respectively:
 - attitude expressed as quaternions,  
 - and actuation forces.
 
-Similarly, the `simulator_attitude_subsystem.py` script simulates robot trajetories considering the simplified attitude subsystem and saves them in `.txt` fyles with the following format:
+Similarly, the `simulator_attitude_subsystem.py` script simulates robot trajetories considering the simplified attitude subsystem and saves them in `.txt` files with the following format:
 
 ```sh
 timestamp
