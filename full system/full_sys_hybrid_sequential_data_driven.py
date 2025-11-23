@@ -43,10 +43,10 @@ show = 0
 flag_scheduler = 0
 
 # Loss hyperparameters for each state variable
-hparam_pos = 0.8127
-hparam_vel = 0.1236
-hparam_quat = 0.0616
-hparam_ang_v = 0.0021
+hparam_pos = 0.9441
+hparam_vel = 0.0376
+hparam_quat = 0.0182
+hparam_ang_v = 0.0002
 
 # Dataset
 folder_gimble = "full_system"
